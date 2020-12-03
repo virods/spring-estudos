@@ -14,6 +14,9 @@ public class Traficante {
     private int cap_destrutiva;
 
 
+
+
+
     @Id
     public String getNome() {
         return nome;
