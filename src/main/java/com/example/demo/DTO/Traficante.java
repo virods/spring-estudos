@@ -4,10 +4,10 @@ package com.example.demo.DTO;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 
 @Entity
 public class Traficante {
-
     private String nome;
     private int qtd_tipo_arma;
     private String nome_arma;

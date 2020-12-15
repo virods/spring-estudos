@@ -1,38 +1,32 @@
 package com.example.demo.controller;
 
-import com.example.demo.DTO.Traficante;
-import com.example.demo.repository.TraficanteRepository;
-import com.example.demo.service.TesteService;
+import com.example.demo.DTO.Conflito;
+import com.example.demo.DTO.GruposArmadosTraficantesDTO;
+import com.example.demo.repository.ConflitoRepository;
+import com.example.demo.repository.GrupoArmadoRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 @RestController
 public class TesteController {
     @Autowired
-    private TesteService testeService;
+    private GrupoArmadoRepository grupoArmadoRepository;
     @Autowired
-    private TraficanteRepository traficanteRepository;
+    private ConflitoRepository conflitoRepository;
 
-    @RequestMapping(value = "/traficantes", method = RequestMethod.GET)
-   public List<Traficante> retornaTraficantes(
-           @RequestParam(value = "nome", defaultValue = "") String nome) throws Exception
-    {
-        return traficanteRepository.findByNome(nome);
-   }
-    @RequestMapping(value = "/todos_traficantes", method = RequestMethod.GET)
-    public List<Traficante> retornaTodosTraficantes() throws Exception
-    {
-        return traficanteRepository.findAll();
+
+    @RequestMapping(value = "/grupos_armados", method = RequestMethod.GET)
+    public List<GruposArmadosTraficantesDTO> retornaGruposArmados(
+            @RequestParam String nome_arma) throws Exception {
+        System.out.println("LOG                                                   Procurando grupos armados");
+        return grupoArmadoRepository.findByGruposArmadosTraficantes(nome_arma);
     }
 
-    @RequestMapping(value = "/traficantes", method = RequestMethod.DELETE)
-    public void deletaTraficantes(
-            @RequestParam(value = "nome", defaultValue = "") String nome) throws Exception
-    {
-        traficanteRepository.deleteByNome(nome);
+    @RequestMapping(value = "/conflitos", method = RequestMethod.GET)
+    public List<Conflito> retornaTop5Conflitos() throws Exception {
+        System.out.println("LOG                                                   Procurando grupos armados");
+        return conflitoRepository.findByGruposArmadosTraficantes();
     }
 }
