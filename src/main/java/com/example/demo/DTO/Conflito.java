@@ -1,20 +1,21 @@
 package com.example.demo.DTO;
 
+
+import lombok.Data;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
+@Data
 public class Conflito {
-
     String nome;
-    Integer num_feridos;
+    int num_feridos;
     String paises_afet;
-    Integer cod_num;
+    int cod_num;
     String religioes_afet;
     String mat_disp;
     String reg_afet;
-    String etnias_enf;
-    Integer conflito_tipo;
 
     public String getNome() {
         return nome;
@@ -24,11 +25,11 @@ public class Conflito {
         this.nome = nome;
     }
 
-    public Integer getNum_feridos() {
+    public int getNum_feridos() {
         return num_feridos;
     }
 
-    public void setNum_feridos(Integer num_feridos) {
+    public void setNum_feridos(int num_feridos) {
         this.num_feridos = num_feridos;
     }
 
@@ -39,13 +40,12 @@ public class Conflito {
     public void setPaises_afet(String paises_afet) {
         this.paises_afet = paises_afet;
     }
-
     @Id
-    public Integer getCod_num() {
+    public int getCod_num() {
         return cod_num;
     }
 
-    public void setCod_num(Integer cod_num) {
+    public void setCod_num(int cod_num) {
         this.cod_num = cod_num;
     }
 
@@ -81,13 +81,14 @@ public class Conflito {
         this.etnias_enf = etnias_enf;
     }
 
-    public Integer getConflito_tipo() {
+    public int getConflito_tipo() {
         return conflito_tipo;
     }
 
-    public void setConflito_tipo(Integer conflito_tipo) {
+    public void setConflito_tipo(int conflito_tipo) {
         this.conflito_tipo = conflito_tipo;
     }
 
-
+    String etnias_enf;
+    int conflito_tipo;
 }

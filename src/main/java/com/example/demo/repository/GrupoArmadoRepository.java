@@ -20,6 +20,8 @@ public interface GrupoArmadoRepository  extends CrudRepository<GruposArmadosTraf
             "INNER JOIN traficante T " +
             "INNER JOIN fornece F " +
             "ON T.NOME= F.fk_Traficante_NOME and F.fk_Grupos_Armados_COD_GRUPO_ARM = G.COD_GRUPO_ARM " +
-            "WHERE T.NOME_ARMA LIKE :nome_arma", nativeQuery = true)
+            "WHERE T.NOME_ARMA = :nome_arma", nativeQuery = true)
     List<GruposArmadosTraficantesDTO> findByGruposArmadosTraficantes(@Param(value="nome_arma") String nome_arma);
+
+
 }
